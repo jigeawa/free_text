@@ -9,6 +9,8 @@ except:
     data_log = 'date_log.log'
     f = open('date_log.log', 'w', encoding = 'utf-8')
     f.write('state,0')
+    f.close()
+    f = open('date_log.log', 'r', encoding = 'utf-8')
 
 print('欢迎使用作文爬取器(v0.9.3)')
 time.sleep(0.2)
@@ -46,7 +48,7 @@ def main():
         print('正在解析数据...')
         time.sleep(0.2)
         soup = BeautifulSoup(r.text, 'html.parser')
-        print('正在写入数据...(录入需要一点时间，请耐心等待)')
+        print('正在写入数据...(录入需要一点时间, 可能会出现未响应、卡死等情况 属于正常现象, 耐心等待即可)')
         time.sleep(0.2)
         project = soup.find_all('p')
         print('预计需要时间: ', len(project) * 0.4, '秒\n')
