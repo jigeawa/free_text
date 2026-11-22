@@ -2,6 +2,7 @@ import requests
 import random
 import time
 from bs4 import BeautifulSoup
+# tip: 这个是我为数不多不靠AI纯手搓的项目  (不会真有人闲到看源代码吧...) 代码是我去年写的了 现在看这段代码我是一点也不认识了 现在还是添加点注释吧 不然过几天只有上帝认识这段代码了
 
 try:
     f = open('date_log.log', 'r', encoding = 'utf-8')
@@ -44,15 +45,15 @@ def main():
 
     if r.status_code == 200:
         print('正在读取文件...')
-        time.sleep(0.2)
+        time.sleep(0.2)         # 嗯... 这几行为什么要加time.sleep呢... 主要是为了装13... 嗯对 (os: 没人觉得很神圣高级吗)
         print('正在解析数据...')
         time.sleep(0.2)
         soup = BeautifulSoup(r.text, 'html.parser')
-        print('正在写入数据...(录入需要一点时间, 可能会出现未响应、卡死等情况 属于正常现象, 耐心等待即可)')
+        print('正在写入数据...(录入需要一点时间, 可能会出现未响应、卡死等情况 属于正常现象, 耐心等待即可)')     # (os: 为了装13必须把这个输出做得很高级)
         time.sleep(0.2)
         project = soup.find_all('p')
         print('预计需要时间: ', len(project) * 0.4, '秒\n')
-        for _ in project:
+        for _ in project:     # 虽然这个循环逻辑像答辩 但是能运行起来就偷着乐吧
             f.write(project[i].get_text() + '\n')
             i += 1
             time.sleep(random.uniform(0.3, 0.7))
@@ -67,7 +68,7 @@ def main():
         input('按回车键退出...')
 
 try:
-    main()
+    main()    # 这边整个main函数  为以后的开发gui准备 (其实已经开发好了)
 except Exception as e:
     time.sleep(0.3)
     print('程序运行时出错')
